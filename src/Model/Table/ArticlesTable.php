@@ -10,9 +10,10 @@ class ArticlesTable extends Table{
     }
 
     public function beforeSave($event, $entity, $options){
-        $sluggedTitle = Text::slug($entity->title);
-        $entity->slug = substr($sluggedTitle,0,191);
-        
+        if($entity->isNew() && !$entity->slug){
+            $sluggedTitle = Text::slug($entity->title);
+            $entity->slug = substr($sluggedTitle,0,191);
+        }
     }
 }
 
