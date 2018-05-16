@@ -7,7 +7,7 @@ class ArticlesController extends AppController{
     public function initialize(){
         parent::initialize();
 
-        $thin->loadComponent('Paginator');
+        $this->loadComponent('Paginator');
     }
 
     public function index(){
